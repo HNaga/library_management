@@ -90,24 +90,20 @@ app_license = "GNU General Public License"
 # Scheduled Tasks
 # ---------------
 
- scheduler_events = {
- 	"all": [
- 		"library_management.tasks.all"
- 	],
- 	"daily": [
- 		"library_management.tasks.daily"
- 	],
- 	"hourly": [
- 		"library_management.tasks.hourly"
- 	],
- 	"weekly": [
- 		"library_management.tasks.weekly"
- 	]
- 	"monthly": [
- 		"library_management.tasks.monthly"
- 	]
- }
+scheduler_events = {
+    "daily": [
+        "library_management.tasks.daily"
+    ],
+    "cron": {
+        "0/10 * * * *": [
+            "library_management.task.run_every_ten_mins"
+        ],
+        "15 18 * * *": [
+            "library_management.task.every_day_at_18_15"
+        ]
+    }
 
+}
 # Testing
 # -------
 
